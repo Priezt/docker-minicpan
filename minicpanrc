@@ -1,0 +1,3 @@
+local: /cpan
+remote: http://mirrors.163.com/cpan
+exact_mirror: 1
