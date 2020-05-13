@@ -8,6 +8,9 @@ RUN apt-get install -yq build-essential
 RUN cpanm --mirror "http://mirrors.163.com/cpan" CPAN::Mini::Webserver
 
 COPY minicpanrc /root/.minicpanrc
+COPY update.sh /root/update.sh
+
+WORKDIR /root
 
 VOLUME /cpan
 EXPOSE 8080
