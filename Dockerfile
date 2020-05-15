@@ -6,11 +6,13 @@ RUN apt-get update -yq
 RUN apt-get install -yq libcpan-mini-perl
 RUN apt-get install -yq cpanminus
 RUN apt-get install -yq build-essential
+RUN apt-get install -yq rsync
 
 #RUN cpanm --mirror "http://mirrors.163.com/cpan" CPAN::Mini::Webserver
 
 COPY minicpanrc /root/.minicpanrc
 COPY update.sh /root/update.sh
+COPY fullupdate.sh /root/fullupdate.sh
 COPY nginx.conf /root/nginx.conf
 
 RUN apt-get install -yq nginx
@@ -21,5 +23,6 @@ RUN cd /etc/nginx && sed -i.bak 's/^user.*/user root;/' nginx.conf
 WORKDIR /root
 
 VOLUME /cpan
+VOLUME /fullcpan
 #EXPOSE 8080
 EXPOSE 80
